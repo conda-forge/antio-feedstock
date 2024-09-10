@@ -1,5 +1,5 @@
 {% set name = "antio" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 729bb80d5a40745fb0cd11ec37b61460004c43b641e6b401c947a0e11bd908e2
+  sha256: 7a693399bde03da8207484abdb61371a7cdd7852dbed9744d75bf1e3e3ed113f
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<39]
   entry_points:
