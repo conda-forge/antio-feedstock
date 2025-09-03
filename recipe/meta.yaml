@@ -14,7 +14,7 @@ build:
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<311]
   entry_points:
-    - antio = antio.commands.main:run
+    - antio = antio._commands.main:run
 
 requirements:
   build:
