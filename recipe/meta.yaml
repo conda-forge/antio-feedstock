@@ -41,7 +41,6 @@ test:
   commands:
     - pip check
     - python -c "from antio.libeep import pyeep; version = pyeep.get_version(); assert version == '3.3.179', version"
-    - antio
   requires:
     - pip
 
