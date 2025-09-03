@@ -1,5 +1,5 @@
 {% set name = "antio" %}
-{% set version = "0.5.0" %}
+{% set version = "0.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e92cd32d8c881ffdd4ce613f3f9af4d6dae76cb8538c85e4add920411d7e8e01
+  sha256: bf090de52857fda89dd017d29d9614008e1df94de3fbf1f3bf60cbe24b6190d0
 
 build:
   number: 0
