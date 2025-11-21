@@ -13,9 +13,9 @@ build:
   number: 2
   python_version_independent: true   # [is_abi3]
   script: {{ PYTHON }} -m pip install . -vv
+  skip: True                         # [is_abi3 and py != 311]
   entry_points:
     - antio = antio._commands.main:run
-  skip: True                         # [is_abi3 and py != 311]
 
 requirements:
   build:
@@ -45,6 +45,7 @@ test:
     - pip check
     - python -c "from antio.libeep import pyeep; version = pyeep.get_version(); assert version == '3.3.179', version"
     - python -c "import antio; ver = antio.__version__; assert ver == '{{ version }}', ver"
+    - python -c "import importlib.metadata; ver = importlib.metadata.version('antio'); assert ver == '{{ version }}', ver"
     - abi3audit $SP_DIR/antio/libeep/pyeep.abi3.so -s -v --assume-minimum-abi3 {{ python_min }}   # [unix and is_abi3]
     - abi3audit %SP_DIR%/antio/libeep/pyeep.pyd -s -v --assume-minimum-abi3 {{ python_min }}      # [win and is_abi3]
   requires:
