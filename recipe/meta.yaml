@@ -10,7 +10,7 @@ source:
   sha256: bf090de52857fda89dd017d29d9614008e1df94de3fbf1f3bf60cbe24b6190d0
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [py<311]
   entry_points:
@@ -28,6 +28,7 @@ requirements:
     - pip
     - python
     - setuptools >=64.0.0
+    - setuptools_scm >=8.0.0
   run:
     - click
     - numpy >=1.23
@@ -41,6 +42,8 @@ test:
   commands:
     - pip check
     - python -c "from antio.libeep import pyeep; version = pyeep.get_version(); assert version == '3.3.179', version"
+    - python -c "import importlib.metadata; ver = importlib.metadata.version('antio'); assert ver == '{{ version }}', ver"
+    - python -c "import antio; ver = antio.__version__; assert ver == '{{ version }}', ver"
   requires:
     - pip
 
