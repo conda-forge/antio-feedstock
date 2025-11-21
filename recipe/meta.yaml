@@ -41,7 +41,7 @@ test:
   commands:
     - pip check
     - python -c "from antio.libeep import pyeep; version = pyeep.get_version(); assert version == '3.3.179', version"
-    - python -c "ver = importlib.metadata.version('antio'); assert ver == '{{ version }}', ver"
+    - python -c "import importlib.metadata; ver = importlib.metadata.version('antio'); assert ver == '{{ version }}', ver"
     - python -c "import antio; ver = antio.__version__; assert ver == '{{ version }}', ver"
   requires:
     - pip
