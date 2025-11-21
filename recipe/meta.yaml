@@ -10,7 +10,7 @@ source:
   sha256: bf090de52857fda89dd017d29d9614008e1df94de3fbf1f3bf60cbe24b6190d0
 
 build:
-  number: 1
+  number: 2
   python_version_independent: true   # [is_abi3]
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
