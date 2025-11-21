@@ -10,9 +10,10 @@ source:
   sha256: bf090de52857fda89dd017d29d9614008e1df94de3fbf1f3bf60cbe24b6190d0
 
 build:
-  number: 1
+  number: 2
+  python_version_independent: true   # [is_abi3]
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [py<311]
+  skip: True                         # [is_abi3 and py != 311]
   entry_points:
     - antio = antio._commands.main:run
 
@@ -27,6 +28,7 @@ requirements:
   host:
     - pip
     - python
+    - python-abi3                    # [is_abi3]
     - setuptools >=64.0.0
     - setuptools_scm >=8.0.0
   run:
@@ -44,8 +46,11 @@ test:
     - python -c "from antio.libeep import pyeep; version = pyeep.get_version(); assert version == '3.3.179', version"
     - python -c "import importlib.metadata; ver = importlib.metadata.version('antio'); assert ver == '{{ version }}', ver"
     - python -c "import antio; ver = antio.__version__; assert ver == '{{ version }}', ver"
+    - abi3audit $SP_DIR/antio/libeep/pyeep.abi3.so -s -v --assume-minimum-abi3 {{ python_min }}   # [unix and is_abi3]
+    - abi3audit %SP_DIR%/antio/libeep/pyeep.pyd -s -v --assume-minimum-abi3 {{ python_min }}      # [win and is_abi3]
   requires:
     - pip
+    - abi3audit                      # [is_abi3]
 
 about:
   home: https://github.com/mscheltienne/antio
