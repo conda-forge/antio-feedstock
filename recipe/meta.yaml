@@ -1,5 +1,5 @@
 {% set name = "antio" %}
-{% set version = "0.6.1" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bf090de52857fda89dd017d29d9614008e1df94de3fbf1f3bf60cbe24b6190d0
+  sha256: 1ff0d55997f20f1cd01eab731eb9b19665742e183a84ea65b605d7a75d8d06b6
 
 build:
-  number: 2
-  python_version_independent: true   # [is_abi3]
+  number: 0
+  python_version_independent: true  # [is_abi3]
   script: {{ PYTHON }} -m pip install . -vv
-  skip: True                         # [is_abi3 and py != 311]
+  skip: true  # [is_abi3 and py != 311]
   entry_points:
     - antio = antio._commands.main:run
 
