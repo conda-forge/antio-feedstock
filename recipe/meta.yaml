@@ -1,5 +1,5 @@
 {% set name = "antio" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1ff0d55997f20f1cd01eab731eb9b19665742e183a84ea65b605d7a75d8d06b6
+  sha256: b9c1c54f18e3384655768f271fb0c40ee71a7747c7e296faab19dc055af3462c
 
 build:
   number: 0
@@ -21,7 +21,7 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake !=4.4.0
     - make
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
