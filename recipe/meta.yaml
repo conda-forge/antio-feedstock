@@ -10,7 +10,7 @@ source:
   sha256: b9c1c54f18e3384655768f271fb0c40ee71a7747c7e296faab19dc055af3462c
 
 build:
-  number: 0
+  number: 1
   python_version_independent: true  # [is_abi3]
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [is_abi3 and py != 311]
